@@ -1,21 +1,22 @@
 package com.example.SpringbootGrapQL.Entities.user;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
-
+@Entity
 @Data
-public class Tasks {
+@Table(name = "m_task")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id", updatable = false)
     private Long taskId;
 
-    @Column
+    @Column(name = "task")
     private String task;
 
     @Column(name = "created_at")

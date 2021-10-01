@@ -1,25 +1,32 @@
 package com.example.SpringbootGrapQL.Resolver;
 
-import com.example.SpringbootGrapQL.Entities.user.Tasks;
-import com.example.SpringbootGrapQL.Repository.TaskRepository;
+import com.example.SpringbootGrapQL.Entities.user.Task;
+import com.example.SpringbootGrapQL.Service.TaskService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
-import org.springframework.stereotype.Component;
-import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
-@Slf4j
-@Component
+@Controller
+@RequiredArgsConstructor
 public class QueryResolver implements GraphQLQueryResolver {
 
-    private TaskRepository taskRepository;
+    @Autowired
+    private final TaskService taskService;
 
-    public QueryResolver(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public List<Task> getTask() {
+        return taskService.findAll();
     }
 
-    public List<Tasks> findAllTasks() {
-        return taskRepository.findAll();
+    public Optional<Task> getTaskById(Long id) {
+        return taskService.getTaskById(id);
+    }
+
+    public Task getTaskByName(String task) {
+        return taskService.getTaskByName(task);
     }
 
 }

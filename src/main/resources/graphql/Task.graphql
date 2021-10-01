@@ -1,0 +1,12 @@
+#Task
+type Task {
+    taskId: ID! # タスクID (string)(PK)
+    task: String! # タスク内容 (string)(not null)
+    createdAt: String! # 登録日時 (string)(format is yyyy-MM-dd hh:mm:ss)(not null)
+}
+
+
+
+
+
+

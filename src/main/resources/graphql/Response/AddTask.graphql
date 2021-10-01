@@ -1,0 +1,6 @@
+# Added Task Response
+type AddTaskResponse {
+    taskId: ID!
+    task: String!
+    createdAt: String!
+}

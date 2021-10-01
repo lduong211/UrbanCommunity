@@ -1,0 +1,6 @@
+#One Task
+input OneTask {
+    taskId: ID
+    task: String!
+    createdAt: String
+}
