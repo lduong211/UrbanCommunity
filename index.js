@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, FlatList } from 'react-native';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+import Task from './Task';
 import { StyleSheet } from 'react-native';
 import Button from './components/button';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8080/graphql'
+})
 
 export default function HomeScreen({ navigation }) {
     return (
@@ -10,15 +17,13 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.bigRed}>My Task</Text>
             <FlatList
                 verticalAlign={true}
-                data={[
-                    { key: 'Task 1' },
-                    { key: 'Task 2' },
-                    { key: 'Task 3' },
-                    { key: 'Task 4' },
-                ]}
-                renderItem={({ item }) => (
+                
+                renderItem={() => (
                     <View style={styles.viewStyle}>
-                        <Text style={styles.item}>●{item.key}</Text>
+                        {/* <Text style={styles.item}>●{item.key}</Text> */}
+                        <ApolloProvider client={client}>
+                            <Task/>
+                        </ApolloProvider>
                         <Button />
                     </View>
                 )} />
@@ -27,11 +32,8 @@ export default function HomeScreen({ navigation }) {
                 onPress={() => navigation.navigate('AddTask')}
                 title="Add Task"
             />
-
             <StatusBar style="auto" />
         </View>
-
-
     );
 }
 
@@ -57,7 +59,8 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'black'
     },
     viewStyle: {
         display: 'flex',
