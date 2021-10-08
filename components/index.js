@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import Task from './Task';
 import { StyleSheet } from 'react-native';
-import Button from './components/button';
+import Button from './button';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8080/graphql'
@@ -15,19 +15,27 @@ export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.bigRed}>My Task</Text>
-            <FlatList
+            {/* <FlatList
                 verticalAlign={true}
-                
-                renderItem={() => (
+                data={[  
+                    {key: 'Task1'},
+                    {key: 'Task2'}, 
+                    {key: 'Task3'},
+                    {key: 'Task4'},  
+                    {key: 'Task5'},
+                    
+                ]}  
+                renderItem={({item}) => (
                     <View style={styles.viewStyle}>
-                        {/* <Text style={styles.item}>●{item.key}</Text> */}
-                        <ApolloProvider client={client}>
-                            <Task/>
-                        </ApolloProvider>
+                        <Text style={styles.item}>●{item.key}</Text>
                         <Button />
                     </View>
-                )} />
+                )} /> */}
 
+            <ApolloProvider client={client}>
+                <Task/>
+                <Button/>
+            </ApolloProvider>
             <Button
                 onPress={() => navigation.navigate('AddTask')}
                 title="Add Task"

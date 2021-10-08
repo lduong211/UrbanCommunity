@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput  } from 'react-native';
-import Button from './components/button.js';
+import Button from './button';
 
 
 export default function AddTask({ navigation }) {

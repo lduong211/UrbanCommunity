@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './index.js';
-import AddTask from './AddTask.js';
+import HomeScreen from './components/index';
+import AddTask from './components/AddTask';
 
 const Stack = createNativeStackNavigator();
 
