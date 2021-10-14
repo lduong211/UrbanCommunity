@@ -10,5 +10,6 @@ public class SpringbootGrapQlApplication {
 
 		SpringApplication.run(SpringbootGrapQlApplication.class, args);
 	}
+
 }
 
