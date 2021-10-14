@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "My_Urbancommunity",
-    "slug": "My_Urbancommunity",
+    "name": "Urbancommunity",
+    "slug": "Urbancommunity",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
