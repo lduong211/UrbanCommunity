@@ -11,7 +11,7 @@ export const ADD_TASK = gql`
 `
 
 export const REMOVE_TASK = gql`
-    mutation deleteTask($taskId: Id!) {
+    mutation deleteTask($taskId: string!) {
         deleteTask(taskId: $taskId)
     }
 `
