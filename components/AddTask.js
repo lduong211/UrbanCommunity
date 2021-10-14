@@ -1,23 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput  } from 'react-native';
-import Button from './button';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { client } from '../GraphQl/client'
+import AddTaskForm from './AddTaskForm'
 
+const AddTask = ({ navigation }) => {
 
-export default function AddTask({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.bigRed}>New Task</Text>
             <SafeAreaView style={styles.innerView}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Insert new task..."
-                    keyboardType="numeric"
-                />
-                <Button
-                    onPress={() => navigation.navigate('Home')}
-                    title="save"
-                />
+                <ApolloProvider client={client}>
+                    <AddTaskForm navigation={navigation}/>
+                </ApolloProvider>
             </SafeAreaView>
             <StatusBar style="auto" />
         </View>
@@ -53,3 +49,5 @@ const styles = StyleSheet.create({
         padding: 10,
     }
 });
+
+export default AddTask

@@ -1,46 +1,27 @@
-import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, FlatList } from 'react-native';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import Task from './Task';
-import { StyleSheet } from 'react-native';
-import Button from './button';
+import * as React from 'react'
+import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import { ApolloProvider } from '@apollo/react-hooks'
+import Tasks from './Tasks'
+import { StyleSheet } from 'react-native'
+import Button from './button'
+import { client } from '../GraphQl/client'
 
-const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql'
-})
 
 export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.bigRed}>My Task</Text>
-            {/* <FlatList
-                verticalAlign={true}
-                data={[  
-                    {key: 'Task1'},
-                    {key: 'Task2'}, 
-                    {key: 'Task3'},
-                    {key: 'Task4'},  
-                    {key: 'Task5'},
-                    
-                ]}  
-                renderItem={({item}) => (
-                    <View style={styles.viewStyle}>
-                        <Text style={styles.item}>●{item.key}</Text>
-                        <Button />
-                    </View>
-                )} /> */}
-
-            <ApolloProvider client={client}>
-                <Task/>
-                <Button/>
-            </ApolloProvider>
-            <Button
-                onPress={() => navigation.navigate('AddTask')}
-                title="Add Task"
-            />
-            <StatusBar style="auto" />
+            <SafeAreaView>
+                <Text style={styles.bigRed}>My Task</Text>
+                <ScrollView style={{ 'height': '400px'}}>
+                    <ApolloProvider client={client}>
+                        <Tasks/>
+                    </ApolloProvider>
+                </ScrollView>
+                <Button
+                    onPress={() => navigation.navigate('AddTask')}
+                    title="Add Task"
+                />
+             </SafeAreaView>
         </View>
     );
 }
@@ -48,7 +29,6 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         width: 300,
-        height: 400,
         fontSize: 20,
         margin: 'auto',
         backgroundColor: '#fff',
