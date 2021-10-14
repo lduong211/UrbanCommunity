@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSolid, faRectangleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons'
 import { useMutation } from '@apollo/react-hooks'
 import { REMOVE_TASK } from '../GraphQl/mutations'
 import { GET_TASK } from '../GraphQl/queries'
@@ -28,12 +28,12 @@ const Task = (props) => {
     } 
     return (
         <>
-            <div style={page} key={props.task.taskId}>
+            <div style={page}>
                 <div>
                     <p style={{ 'fontSize': '24px', 'fontFamily': 'cursive', 'fontweight': 'bold', 'margin': '0' }}>{`${props.task.task}`}</p>
                     <span style={{ 'fontSize': '12px', 'color': '#9e9e9e' }}>{`${props.task.createdAt}`}</span>
                 </div>
-                <FontAwesomeIcon onClick={() => handleClick(props.task.taskId)} icon={faSolid, faRectangleXmark} />
+                <FontAwesomeIcon onClick={() => handleClick(props.task.taskId)} icon={faRectangleXmark} />
             </div>
             <div style={{'borderBottom': '1px solid', 'margin': '0 10px'}}></div>
         </>

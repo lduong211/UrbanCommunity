@@ -32,16 +32,16 @@ const AddTaskForm = ({ navigation }) => {
     return (
         <View>
             <TextInput
-                        style={styles.input}
-                        placeholder="Insert new task..."
-                        keyboardType="numeric"
-                        onChange={(event) => setUserInput(event.target.value)}
-                        value={userInput}
-                    />
-                    <Button
-                        onPress={() => handleClick()}
-                        title="Save"
-                    />
+                style={styles.input}
+                placeholder="Insert new task..."
+                keyboardType="numeric"
+                onChange={(event) => setUserInput(event.target.value)}
+                value={userInput}
+            />
+            <Button
+                onPress={() => handleClick()}
+                title="Save"
+            />
         </View>
     )
 }
