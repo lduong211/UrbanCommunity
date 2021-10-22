@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
-import Button from './button'
+import Button from './Button'
 import { useMutation } from '@apollo/react-hooks'
 import { ADD_TASK } from '../GraphQl/mutations'
 import { GET_TASK } from '../GraphQl/queries'
@@ -18,7 +18,6 @@ const AddTaskForm = ({ navigation }) => {
             taskName: userInput
         }
         
-        console.log(userInput)
         await addTask({ variables,
             refetchQueries: [
                 { query: GET_TASK }
@@ -34,8 +33,7 @@ const AddTaskForm = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="Insert new task..."
-                keyboardType="numeric"
-                onChange={(event) => setUserInput(event.target.value)}
+                onChangeText={text => setUserInput(text)}
                 value={userInput}
             />
             <Button

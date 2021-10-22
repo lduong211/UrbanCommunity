@@ -22,8 +22,8 @@ const AddTask = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        height: 400,
+        width: '100%',
+        height: '100%',
         fontSize: 20,
         margin: 'auto',
         backgroundColor: '#fff',

@@ -1,21 +1,14 @@
 import React from 'react'
-import { View  } from 'react-native'
-import Task from './Task'
-import { useQuery } from '@apollo/react-hooks'
-import { GET_TASK } from '../GraphQl/queries'
+import { View, Text, ScrollView } from 'react-native'
+import TaskItem from './TaskItem'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { client } from '../GraphQl/client'
 
-const Tasks = () => {
-
-    const {loading, error, data} = useQuery(GET_TASK)
-    console.log(data)
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Something went wrong...</p>
-
-    return data.Task.map((currentTask) => (
-        <View>
-            <Task task={currentTask}/>
-        </View>
-    ))
-}
+const Tasks = () => 
+    <ScrollView style={{ 'height': '84%'}}>
+        <ApolloProvider client={client}>
+            <TaskItem/>
+        </ApolloProvider>
+    </ScrollView>
 
 export default Tasks

@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, ScrollView } from 'react-native'
 import { ApolloProvider } from '@apollo/react-hooks'
 import Tasks from './Tasks'
 import { StyleSheet } from 'react-native'
-import Button from './button'
+import Button from './Button'
 import { client } from '../GraphQl/client'
 
 
