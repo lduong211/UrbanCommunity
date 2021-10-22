@@ -2,4 +2,5 @@
 type Mutation {
     addTask(taskName: String!): Task
     deleteTask(taskId: ID!): String
+    updateTask(taskId: ID!, taskName: String!): Task
 }

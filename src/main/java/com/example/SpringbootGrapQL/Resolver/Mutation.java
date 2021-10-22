@@ -28,4 +28,9 @@ public class Mutation implements GraphQLMutationResolver {
         return taskService.deleteTask(taskId);
     }
 
+    //update Task
+    public Task updateTask(Long taskId, String taskName) {
+        return taskService.updateTask(taskId, taskName);
+    }
+
 }

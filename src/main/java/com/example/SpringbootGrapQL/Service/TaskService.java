@@ -44,4 +44,12 @@ public class TaskService {
         return "Task " + id + " is deleted";
     }
 
+    //Update
+    public Task updateTask(Long id, String task) {
+        Task myTask = taskRepository.getTaskById(id);
+        myTask.setTask(task);
+        taskRepository.save(myTask);
+        return myTask;
+    }
+
 }
